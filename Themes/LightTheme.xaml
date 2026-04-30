@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="BrushBgDark"        Color="#FFF0F2F5"/>
+    <SolidColorBrush x:Key="BrushBgPanel"       Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="BrushBgCard"        Color="#FFEAEDF2"/>
+    <SolidColorBrush x:Key="BrushBgCardHover"   Color="#FFD8DCE8"/>
+    <SolidColorBrush x:Key="BrushAccent"        Color="#FF6C63FF"/>
+    <SolidColorBrush x:Key="BrushAccentGreen"   Color="#FF2FA88A"/>
+    <SolidColorBrush x:Key="BrushTextPrimary"   Color="#FF1A1A2E"/>
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="#FF6B7280"/>
+    <SolidColorBrush x:Key="BrushBorder"        Color="#FFD1D5DB"/>
+    <SolidColorBrush x:Key="BrushDanger"        Color="#FFDC2626"/>
+    <SolidColorBrush x:Key="BrushSuccess"       Color="#FF2FA88A"/>
+    <SolidColorBrush x:Key="BrushSuccessBg"     Color="#1A2FA88A"/>
+    <SolidColorBrush x:Key="BrushErrorBg"       Color="#1ADC2626"/>
+    <SolidColorBrush x:Key="BrushFavActive"     Color="#FFE59400"/>
+    <SolidColorBrush x:Key="BrushFavInactive"   Color="#FFD1D5DB"/>
+    <Color x:Key="ColorAccent">#FF6C63FF</Color>
+</ResourceDictionary>

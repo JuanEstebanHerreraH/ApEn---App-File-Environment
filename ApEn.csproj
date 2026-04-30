@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ApEn</RootNamespace>
+    <AssemblyName>ApEn</AssemblyName>
+    <!-- Icono del ejecutable (.exe en el explorador de Windows) -->
+    <ApplicationIcon>Assets\apen.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Todos los assets embebidos como Resource para que pack:// funcione -->
+    <Resource Include="Themes\DarkTheme.xaml"/>
+    <Resource Include="Themes\LightTheme.xaml"/>
+    <Resource Include="Assets\apen_logo.png"/>
+    <Resource Include="Assets\apen.ico"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\config.json" Condition="Exists('Data\config.json')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

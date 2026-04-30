@@ -1,0 +1,44 @@
+# ══════════════════════════════════════════════════════════════════════
+#  .gitignore para ApEn — App & File Environment
+#  Si compartes este proyecto, estos archivos NO se suben a git.
+#  No son "sospechosos" — son archivos que genera el compilador o el
+#  sistema operativo y que no deben versionarse.
+# ══════════════════════════════════════════════════════════════════════
+
+# ── Compilación .NET ──────────────────────────────────────────────────
+# bin/ y obj/ son generados por "dotnet build". Pueden ser GRANDES
+# (50-200 MB) y se regeneran solos. Incluyen ApEn.dll (el ejecutable).
+# Los antivirus a veces marcan DLLs en estas carpetas como falsos
+# positivos porque son archivos nuevos sin firma de distribución.
+bin/
+obj/
+
+# ── Visual Studio / Rider ─────────────────────────────────────────────
+# Carpeta de configuración local del IDE. Contiene rutas absolutas
+# de tu PC y no son útiles para otras personas.
+.vs/
+.idea/
+
+# Opciones personales del proyecto (rutas locales, no confidencial)
+*.user
+*.suo
+
+# ── Configuración personal de ApEn ───────────────────────────────────
+# config.json guarda TUS aplicaciones y carpetas personales.
+# No tiene sentido subirlo porque cada usuario tendrá el suyo.
+# Este archivo se crea automáticamente al usar ApEn.
+Data/config.json
+
+# ── Sistema operativo ─────────────────────────────────────────────────
+# Windows genera Thumbs.db (miniaturas de imágenes) en cada carpeta.
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS genera .DS_Store (metadata de Finder). Si usas Mac para editar.
+.DS_Store
+
+# ── Publicación / Release ─────────────────────────────────────────────
+# Si usas "dotnet publish", genera carpetas con el ejecutable final.
+publish/
+release/
