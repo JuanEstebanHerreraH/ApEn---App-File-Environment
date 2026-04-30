@@ -1,145 +1,193 @@
-# ⚡ ApEn — App & File Environment
+<div align="center">
 
-Hub de productividad personal para Windows.
-Stack: **C# · .NET 8 · WPF · MVVM**
+<img src="Assets/apen_logo.png" alt="ApEn Logo" width="120" />
+
+# ApEn — App & File Environment
+
+### Hub de productividad personal · Offline · Sin instalación
+
+*Launcher de apps · Organizer de archivos · Etiquetas · Favoritos · Temas*
 
 ---
 
-## ✅ Requisitos
+![.NET](https://img.shields.io/badge/.NET_8-WPF-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-MVVM-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![SQLite](https://img.shields.io/badge/Config-JSON_local-F7DF1E?style=for-the-badge&logoColor=black)
+
+</div>
+
+---
+
+## ¿Qué es ApEn?
+
+**ApEn** es una aplicación de escritorio para Windows que funciona como hub de productividad personal. Lanza tus apps favoritas con un clic y organiza carpetas de archivos automáticamente por tipo. Todo funciona **100% offline** — sin cuentas, sin servidores, sin que nada salga de tu PC.
+
+---
+
+## Características
+
+| | Función | Descripción |
+|:---:|---|---|
+| 🚀 | **App Launcher** | Agrega tus aplicaciones favoritas y láncalas con un clic |
+| ★ | **Favoritos** | Marca apps como favoritas para tenerlas siempre arriba |
+| ✎ | **Renombrar** | Ponle el nombre que quieras a cada app dentro de ApEn |
+| 🏷️ | **Etiquetas** | Crea etiquetas con colores personalizados (presets + hex) y filtra por ellas |
+| 📂 | **File Organizer** | Clasifica automáticamente los archivos de una carpeta en subcarpetas por tipo |
+| 🌗 | **Tema claro/oscuro** | Cambia entre tema oscuro y claro con un clic |
+| 💾 | **100% offline** | Configuración guardada en JSON local. Nada sale de tu PC |
+
+---
+
+## Para usuarios: descargar y ejecutar
+
+> No necesitas instalar nada. Solo descarga y ejecuta.
+
+### ⬇️ Descarga
+
+1. Ve a [**Releases**](https://github.com/JuanEstebanHerreraH/ApEn---App-File-Environment/releases)
+2. Descarga **`ApEn-v1.0-win-x64.zip`**
+3. Descomprime el ZIP en cualquier lugar (Escritorio, Documentos, donde prefieras)
+4. Haz doble clic en **`ApEn.exe`**
+
+> **¿Windows muestra "aplicación desconocida"?** → Haz clic en **"Más información" → "Ejecutar de todas formas"**. ApEn no tiene firma de código de pago, pero el código fuente es 100% público y verificable aquí en GitHub.
+
+> **¿Tu antivirus lo marca?** → Es un falso positivo conocido. Los ejecutables compilados localmente sin firma de distribución a veces disparan heurísticos de ML. El código es abierto — puedes revisarlo tú mismo. Agrega `ApEn.exe` a las exclusiones de tu antivirus.
+
+---
+
+## Cómo usar ApEn
+
+### Launcher
+
+```
+1. Clic en "+ App" → selecciona un .exe desde tu PC
+2. La app aparece en la lista — clic en ▶ para ejecutarla
+3. Clic en ★ para marcarla como favorita (aparece arriba)
+4. Desde el panel de detalle (derecha) puedes:
+   - ✎ Renombrarla (solo dentro de ApEn, no toca el archivo)
+   - Asignarle etiquetas de color
+5. Clic en "🏷 Filtrar" para filtrar por etiquetas
+```
+
+### File Organizer
+
+```
+1. Clic en "Examinar..." → elige la carpeta a organizar
+2. Clic en "⚡ Organizar"
+3. Los archivos se mueven automáticamente a subcarpetas:
+```
+
+| Subcarpeta | Tipos de archivo |
+|---|---|
+| `PDF/` | .pdf |
+| `Images/` | .jpg .png .gif .bmp .webp .svg... |
+| `Videos/` | .mp4 .mkv .avi .mov .wmv... |
+| `Audio/` | .mp3 .wav .flac .aac .ogg... |
+| `Docs/` | .docx .xlsx .pptx .txt .csv... |
+| `Zips/` | .zip .rar .7z .tar .gz... |
+| `Others/` | Todo lo demás |
+
+> Los archivos que ya están en subcarpetas no se duplican.
+
+---
+
+## Para desarrolladores: compilar desde código fuente
+
+### Requisitos
 
 | Herramienta | Versión | Link |
 |---|---|---|
-| **Windows** | 10 / 11 (64-bit) | — |
 | **.NET 8 SDK** | 8.x | https://dotnet.microsoft.com/download/dotnet/8.0 |
+| **Windows** | 10 / 11 (64-bit) | — |
+| **Visual Studio 2022** *(opcional)* | Community gratis | https://visualstudio.microsoft.com/ |
 
----
+### Ejecutar en modo desarrollo
 
-## 🚀 Ejecutar
-
-```bash
-# IMPORTANTE: borrar bin/ y obj/ si vienes de una versión anterior
-rmdir /s /q bin
-rmdir /s /q obj
-
+```cmd
+git clone https://github.com/JuanEstebanHerreraH/ApEn---App-File-Environment.git
+cd ApEn---App-File-Environment\ApEn
 dotnet build
 dotnet run
 ```
 
----
+### Generar ejecutable para distribución
 
-## 🔴 Sobre antivirus (Malwarebytes / Windows Defender)
+```cmd
+rem Compilar en modo Release — genera un solo .exe sin dependencias externas
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o publish
 
-### ¿Por qué puede aparecer una alerta?
+rem Crear el ZIP para el release
+cd publish
+powershell Compress-Archive -Path ApEn.exe -DestinationPath ..\ApEn-v1.0-win-x64.zip
+```
 
-**ApEn no es malware.** Sin embargo, algunos antivirus como Malwarebytes pueden marcarlo
-como falso positivo con el nombre `MachineLearning/Anomalous`.
-
-**La razón técnica:**
-
-Versiones anteriores usaban P/Invoke manual (llamadas directas a `shell32.dll` y `user32.dll`
-escritas en el código C#). Esta técnica es idéntica a la que usan troyanos bancarios para
-crear ventanas overlay invisibles. El motor de Machine Learning de Malwarebytes detecta ese
-patrón y lo bloquea preventivamente aunque el software sea legítimo.
-
-**¿Cómo está resuelto en la versión actual?**
-
-La versión actual usa **dos cambios críticos**:
-
-1. **`System.Drawing.Common`** (paquete oficial de Microsoft, firmado digitalmente)
-   en lugar de P/Invoke manual para extraer íconos de aplicaciones.
-
-2. **`WindowChrome`** (API oficial de WPF de Microsoft) en lugar de
-   `AllowsTransparency="True"` + `WindowStyle="None"` para la ventana personalizada.
-   Esta combinación era la firma exacta de keyloggers y troyanos bancarios.
-
-**Si tu antivirus aún lo marca:**
-
-1. Borra las carpetas `bin/` y `obj/` completamente.
-2. Vuelve a compilar con `dotnet build`.
-3. El nuevo `.dll` generado **no** usa las técnicas que disparan el heurístico.
-4. Si persiste, agrega la carpeta `ApEn\bin\Debug\net8.0-windows\` a las exclusiones
-   del antivirus. Es seguro hacerlo porque el código es abierto y verificable.
+El archivo `ApEn-v1.0-win-x64.zip` (~70 MB) contiene el ejecutable listo para distribuir. El usuario final **no necesita instalar .NET** — va todo incluido.
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 ApEn/
-├── .gitignore              ← Archivos ignorados por git (ver explicación abajo)
-├── ApEn.csproj             ← .NET 8 WPF + System.Drawing.Common
-├── App.xaml / .cs          ← Entry point + estilos globales
 ├── Assets/
-│   ├── apen.ico            ← Ícono de la app (generado desde el logo)
-│   └── apen_logo.png       ← Logo PNG para la UI
+│   ├── apen_logo.png          ← Logo de la app
+│   └── apen.ico               ← Ícono del ejecutable
 ├── Commands/
-│   └── RelayCommand.cs     ← ICommand para MVVM
+│   └── RelayCommand.cs        ← ICommand para MVVM
 ├── Converters/
-│   └── Converters.cs       ← Value converters para bindings XAML
+│   └── Converters.cs          ← Value converters para XAML
 ├── Data/
-│   └── config.json         ← TU configuración personal (no se sube a git)
-├── Models/                 ← AppModel, TagModel, ConfigModel
+│   └── config.json            ← Tu configuración personal (no se sube a git)
+├── Models/
+│   ├── AppModel.cs            ← Datos de una app del launcher
+│   ├── TagModel.cs            ← Etiqueta con color
+│   └── ConfigModel.cs         ← Raíz del JSON
 ├── Services/
-│   ├── ConfigService.cs    ← Leer/guardar config.json
-│   ├── FileOrganizerService.cs ← Clasificar archivos
-│   ├── IconService.cs      ← Extraer ícono del .exe (sin P/Invoke)
-│   └── ThemeService.cs     ← Cambiar tema dark/light
+│   ├── ConfigService.cs       ← Leer/guardar config.json
+│   ├── FileOrganizerService.cs ← Clasificar archivos por tipo
+│   ├── IconService.cs         ← Extraer ícono del .exe
+│   └── ThemeService.cs        ← Cambiar tema dark/light
 ├── Themes/
-│   ├── DarkTheme.xaml      ← Paleta de colores oscura
-│   └── LightTheme.xaml     ← Paleta de colores clara
-├── ViewModels/             ← Lógica de UI (MVVM)
-└── Views/
-    ├── MainWindow.xaml/.cs ← Ventana principal
-    └── TagDialog.xaml/.cs  ← Diálogo de nueva etiqueta
+│   ├── DarkTheme.xaml         ← Paleta oscura
+│   └── LightTheme.xaml        ← Paleta clara
+├── ViewModels/
+│   ├── BaseViewModel.cs       ← INotifyPropertyChanged base
+│   ├── AppItemViewModel.cs    ← VM de cada app en la lista
+│   └── MainViewModel.cs       ← Lógica principal de la UI
+├── Views/
+│   ├── MainWindow.xaml/.cs    ← Ventana principal
+│   └── TagDialog.xaml/.cs     ← Diálogo de nueva etiqueta
+├── App.xaml/.cs               ← Entry point + estilos globales
+└── ApEn.csproj                ← .NET 8 WPF
 ```
 
 ---
 
-## 📄 Sobre el .gitignore — archivos "ocultos"
+## Privacidad
 
-El archivo `.gitignore` le dice a git qué carpetas y archivos NO subir al repositorio.
-No son archivos maliciosos ni ocultos en el sentido sospechoso — son archivos que el
-compilador genera automáticamente y que no tienen sentido versionar.
-
-### `bin/` — Archivos de compilación
-
-Contiene el ejecutable compilado (`ApEn.dll`, `ApEn.exe`) y todas sus dependencias.
-**Se genera automáticamente** con `dotnet build`. No se sube porque:
-- Puede pesar 50-200 MB
-- Cada usuario lo genera en su propia máquina
-- Los antivirus pueden marcar DLLs recién compiladas sin firma de distribución
-
-### `obj/` — Archivos intermedios
-
-Archivos temporales que el compilador usa internamente para optimizar compilaciones
-subsecuentes. No contienen código ejecutable útil. Se regeneran solos.
-
-### `Data/config.json` — Tu configuración personal
-
-Guarda qué aplicaciones has agregado al launcher y tu carpeta del Organizer.
-No se sube porque es información personal de tu PC (rutas como `C:\Users\tu_nombre\...`).
-Cada usuario tiene el suyo propio y se crea automáticamente al usar ApEn.
-
-### `.vs/` y `.idea/` — Configuración del IDE
-
-Carpetas que Visual Studio y JetBrains Rider crean para guardar preferencias locales
-(ventanas abiertas, breakpoints, etc.). No son útiles para otros usuarios.
+- **Sin internet:** ApEn no hace ninguna petición de red. Todo es local.
+- **Sin analytics:** No hay telemetría ni recolección de datos.
+- **Sin cuenta:** No necesitas registrarte en nada.
+- Tu configuración se guarda únicamente en `Data/config.json` en tu PC.
 
 ---
 
-## 🎮 Cómo usar ApEn
+## Sobre el .gitignore
 
-### Launcher
-- **+ Agregar** → selecciona un `.exe`
-- **☰** → abre/cierra el panel de etiquetas
-- **★** → marcar como favorito (aparece en sección Favoritos arriba)
-- **✎** en el panel de detalle → renombrar la app (solo dentro de ApEn)
-- **+ Nueva** en Etiquetas → abre diálogo para crear etiqueta con color (presets + hex)
+El archivo `.gitignore` excluye carpetas que el compilador genera automáticamente y no deben versionarse:
 
-### Organizer
-- **Examinar** → elige la carpeta
-- **⚡ Organizar** → clasifica los archivos en subcarpetas
+| Carpeta/archivo | Por qué se ignora |
+|---|---|
+| `bin/` y `obj/` | Generados por `dotnet build`. Pesan 50-200 MB y cada usuario los genera en su PC |
+| `Data/config.json` | Tu lista personal de apps y carpetas — no tiene sentido compartirla |
+| `.vs/` | Configuración local de Visual Studio (rutas de tu PC) |
+| `publish/` | El ejecutable compilado va en Releases, no en el código fuente |
 
 ---
 
-*ApEn v3.1 — .NET 8 + WPF + MVVM*
+<div align="center">
+
+Construido con ❤️ en C# y WPF · Windows 10/11 · .NET 8 · Datos 100% tuyos
+
+</div>
