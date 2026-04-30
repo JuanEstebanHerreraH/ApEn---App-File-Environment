@@ -29,7 +29,7 @@
 
 | | Función | Descripción |
 |:---:|---|---|
-| 🚀 | **App Launcher** | Agrega tus aplicaciones y láncalas con un clic |
+| 🚀 | **App Launcher** | Agrega tus aplicaciones y lánzalas con un clic |
 | ★ | **Favoritos** | Marca apps como favoritas para tenerlas siempre arriba |
 | ✎ | **Renombrar** | Ponle el nombre que quieras dentro de ApEn |
 | 🏷️ | **Etiquetas** | Crea etiquetas con colores personalizados y filtra por ellas |
