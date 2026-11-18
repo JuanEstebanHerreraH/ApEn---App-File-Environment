@@ -1,23 +1,19 @@
-<div align="center">
+# ApEn · App & File Environment
 
-<img src="Assets/apen_logo.png" alt="ApEn Logo" width="120" />
+**Tus aplicaciones y archivos organizados desde una misma ventana.**
 
-# ApEn — App & File Environment
+Lanzador para Windows con etiquetas, favoritos y clasificación de carpetas por tipo de archivo. Desarrollado en C# y WPF, con configuración JSON local.
 
-### Hub de productividad personal para Windows · Sin instalación · Sin cuenta
+**[Descargar ApEn para Windows x64](https://github.com/JuanEstebanHerreraH/ApEn---App-File-Environment/releases/tag/ApEn)**
 
-*Launcher de apps · Organizador de archivos · Etiquetas · Favoritos · Temas*
+Descomprime `ApEn-v1.0-win-x64.zip` y abre `ApEn.exe`. No necesitas el SDK de .NET para usar la distribución publicada.
 
----
+**Decisión de implementación:** las preferencias y los accesos se guardan localmente para utilizar el lanzador sin una cuenta online.
 
-![.NET](https://img.shields.io/badge/.NET_8-WPF-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D4?style=for-the-badge&logo=windows&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-MVVM-239120?style=for-the-badge&logo=csharp&logoColor=white)
-![Offline](https://img.shields.io/badge/Config-JSON_local-F7DF1E?style=for-the-badge&logoColor=black)
+**Alcance:** el organizador puede mover archivos a subcarpetas. Pruébalo primero con una carpeta de ejemplo.
 
-</div>
-
----
+<details>
+<summary><strong>Funciones, requisitos y documentación técnica</strong></summary>
 
 ## ¿Qué es ApEn?
 
@@ -50,20 +46,6 @@
 ### ⚠️ SmartScreen de Windows
 
 Si Windows muestra *"aplicación desconocida"* → clic en **"Más información" → "Ejecutar de todas formas"**. ApEn no tiene firma de código de pago, pero el código fuente es 100% público y verificable aquí en GitHub.
-
-### 🔴 Falso positivo de antivirus (Malwarebytes y otros)
-
-Algunos antivirus como Malwarebytes pueden marcar el ejecutable como `MachineLearning/Anomalous`. **ApEn no es malware.**
-
-**¿Por qué ocurre?**
-Los ejecutables compilados localmente sin firma de distribución comercial disparan heurísticos de machine learning en algunos antivirus. Es un falso positivo documentado que afecta a muchas aplicaciones de código abierto sin firma de código.
-
-**Solución:**
-- Agrega `ApEn.exe` a las exclusiones de tu antivirus
-- Verifica el código fuente directamente aquí en el repositorio — es completamente público
-- Si quieres mayor confianza, compílalo tú mismo desde el código fuente (ver sección de desarrolladores)
-
----
 
 ## Cómo usar ApEn
 
@@ -152,3 +134,5 @@ ApEn/
 Construido con C# y WPF · Windows 10/11 · .NET 8
 
 </div>
+
+</details>
